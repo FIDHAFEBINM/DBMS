@@ -93,3 +93,24 @@ mysql> SELECT Name FROM EMPLOYEE WHERE Dept not in("HR","Production","Finance");
 | Lubina |
 +--------+
 3 rows in set (0.00 sec)
+mysql> SELECT count(Name) FROM EMPLOYEE GROUP BY Dept ;
++-------------+
+| count(Name) |
++-------------+
+|           2 |
+|           2 |
+|           3 |
+|           3 |
++-------------+
+4 rows in set (0.16 sec)
+
+mysql> SELECT count(Name) FROM EMPLOYEE GROUP BY Dept order by Dept;
++-------------+
+| count(Name) |
++-------------+
+|           3 |
+|           2 |
+|           3 |
+|           2 |
++-------------+
+4 rows in set (0.00 sec)
