@@ -150,3 +150,51 @@ mysql> desC EMPLOYEE;
 | Salary          | float(10,2) | YES  |     | NULL    |       |
 +-----------------+-------------+------+-----+---------+-------+
 6 rows in set (0.03 sec)
+mysql> insert into DEPARTMENT VALUES("C01","HR","DELHI");
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into DEPARTMENT VALUES("C02","FINANCE","DELHI");
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into DEPARTMENT VALUES("C03","FINANCE","DELHI");
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into DEPARTMENT VALUES("C04","HR","MUMBAI");
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into DEPARTMENT VALUES("C05","HR","MUMBAI");
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into DEPARTMENT VALUES("C06","MARKETTING","MUMBAI");
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into DEPARTMENT VALUES("C07","MARKETTING","DELHI");
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into DEPARTMENT VALUES("C08","PRODUCTION","DELHI");
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into DEPARTMENT VALUES("C09","PRODUCTION","MUMBAI");
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into DEPARTMENT VALUES("C010","PRODUCTION","KOCHI");
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM DEPARTMENT;
++------+------------+-----------+
+| DID  | DNAME      | DLOCATION |
++------+------------+-----------+
+| C01  | HR         | DELHI     |
+| C02  | FINANCE    | DELHI     |
+| C03  | FINANCE    | DELHI     |
+| C04  | HR         | MUMBAI    |
+| C05  | HR         | MUMBAI    |
+| C06  | MARKETTING | MUMBAI    |
+| C07  | MARKETTING | DELHI     |
+| C08  | PRODUCTION | DELHI     |
+| C09  | PRODUCTION | MUMBAI    |
+| C010 | PRODUCTION | KOCHI     |
++------+------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql>
