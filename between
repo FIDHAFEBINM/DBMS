@@ -1,0 +1,95 @@
+filiates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use EMPLOYEE;
+Database changed
+mysql> select * from EMPLOYEE;
++------+--------+------------+-------------------+-------------------+----------+
+| SSN  | Name   | Dept       | ProjectName       | ProjectLocation   | Salary   |
++------+--------+------------+-------------------+-------------------+----------+
+| CAB0 | Raniya | HR         | Developing        | Kozhikode         | 10000.98 |
+| CAB1 | Fidha  | HR         | Meeting           | Thiruvanandapuram | 10000.00 |
+| CAB2 | Hadiya | Production | Makeup            | Thiruvanandapuram | 50000.00 |
+| CAB3 | Hasna  | Production | Dress             | Kozhikode         | 50000.00 |
+| CAB4 | Hasna  | Finance    | Accounts          | Thrissure         | 60000.00 |
+| CAB5 | Kavya  | Finance    | CA                | Delhi             | 60000.67 |
+| CAB6 | Lubna  | Marketting | Sales             | Kozhikode         | 70000.67 |
+| CAB7 | Lubina | Marketting | Advertisement     | Kollam            | 70000.00 |
+| CAB8 | Lubina | Marketting | Banking           | Kochi             | 80000.00 |
+| CAB4 | Nafiya | Finance    | Financial service | Kochi             | 60000.00 |
++------+--------+------------+-------------------+-------------------+----------+
+10 rows in set (0.04 sec)
+
+mysql> select max(salary).from EMPLOYEE;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.from EMPLOYEE' at line 1
+mysql> select max(salary) from EMPLOYEE;
++-------------+
+| max(salary) |
++-------------+
+|    80000.00 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(salary) from EMPLOYEE;
++--------------+
+| avg(salary)  |
++--------------+
+| 52000.232422 |
++--------------+
+1 row in set (0.02 sec)
+
+mysql> create table DEPARTMENT(DID VARCHAR(30),DNAME VARCHAR(30),DLOCATION VARCHAR(30));
+Query OK, 0 rows affected (0.88 sec)
+
+mysql> SELECT SALARY FROM EMPLOYEE WHERE SALARY BETWEEN 10000 AND 50000;
++----------+
+| SALARY   |
++----------+
+| 10000.98 |
+| 10000.00 |
+| 50000.00 |
+| 50000.00 |
++----------+
+4 rows in set (0.05 sec)
+
+mysql> SELECT * FROM EMPLOYEE WHERE Projectlocation in("Thiruvanandapurm","Delhi");
++------+-------+---------+-------------+-----------------+----------+
+| SSN  | Name  | Dept    | ProjectName | ProjectLocation | Salary   |
++------+-------+---------+-------------+-----------------+----------+
+| CAB5 | Kavya | Finance | CA          | Delhi           | 60000.67 |
++------+-------+---------+-------------+-----------------+----------+
+1 row in set (0.10 sec)
+
+mysql> SELECT Projectlocation FROM EMPLOYEE WHERE Projectlocation in("Thiruvanandapurm","Delhi");
++-----------------+
+| Projectlocation |
++-----------------+
+| Delhi           |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Name FROM EMPLOYEE WHERE Dept in("HR","Production","Finance");
++--------+
+| Name   |
++--------+
+| Raniya |
+| Fidha  |
+| Hadiya |
+| Hasna  |
+| Hasna  |
+| Kavya  |
+| Nafiya |
++--------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT Name FROM EMPLOYEE WHERE Dept not in("HR","Production","Finance");
++--------+
+| Name   |
++--------+
+| Lubna  |
+| Lubina |
+| Lubina |
++--------+
+3 rows in set (0.00 sec)
