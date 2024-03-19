@@ -115,3 +115,38 @@ mysql> SELECT count(Name) FROM EMPLOYEE GROUP BY Dept order by Dept;
 |           2 |
 +-------------+
 4 rows in set (0.00 sec)
+mysql> UPDATE EMPLOYEE SET SSN="CAB9" WHERE NAME="Nafiya";
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> ALTER TABLE EMPLOYEE ADD PRIMARY KEY(SSN);
+Query OK, 0 rows affected (0.98 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desC EMPLOYEE;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| SSN             | varchar(10) | NO   | PRI | NULL    |       |
+| Name            | varchar(40) | YES  |     | NULL    |       |
+| Dept            | varchar(30) | YES  |     | NULL    |       |
+| ProjectName     | varchar(30) | YES  |     | NULL    |       |
+| ProjectLocation | varchar(30) | YES  |     | NULL    |       |
+| Salary          | float(10,2) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> ALTER TABLE EMPLOYEE drop PRIMARYKEY(ID);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(ID)' at line 1
+mysql> desC EMPLOYEE;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| SSN             | varchar(10) | NO   | PRI | NULL    |       |
+| Name            | varchar(40) | YES  |     | NULL    |       |
+| Dept            | varchar(30) | YES  |     | NULL    |       |
+| ProjectName     | varchar(30) | YES  |     | NULL    |       |
+| ProjectLocation | varchar(30) | YES  |     | NULL    |       |
+| Salary          | float(10,2) | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
