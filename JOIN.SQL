@@ -232,4 +232,101 @@ mysql> SELECT ORDERS.orderid,PRODUCTS.PRODUCTNAME FROM ORDERS INNER JOIN PRODUCT
 +---------+-------------+
 5 rows in set (0.00 sec)
 
-mysql>
+mysql>mysql> SELECT ORDERS.orderid,ORDERS.ordername,PRODUCTS.PRODUCTNAME FROM ORDERS INNER JOIN PRODUCTS ON ORDERS.orderid=PRODUCTS.ORDERID;
++---------+-------------+-------------+
+| orderid | ordername   | PRODUCTNAME |
++---------+-------------+-------------+
+| CAD1    | RANIYA      | POWDER      |
+| CAD3    | POWDER      | SUNSCREEN   |
+| CAD5    | SUNSCREEN   | BAG         |
+| CAD7    | BAG         | MOISTURIZER |
+| CAD9    | MOISTURIZER | RANIYA      |
++---------+-------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT ORDERS.orderid,ORDERS.ordername,PRODUCTS.PRODUCTNAME FROM ORDERS INNER JOIN PRODUCTS ON ORDERS.orderid>PRODUCTS.ORDERID;
++---------+-------------+-------------+
+| orderid | ordername   | PRODUCTNAME |
++---------+-------------+-------------+
+| CAD2    | POWDER      | POWDER      |
+| CAD3    | POWDER      | POWDER      |
+| CAD4    | POWDER      | POWDER      |
+| CAD4    | POWDER      | SUNSCREEN   |
+| CAD5    | SUNSCREEN   | POWDER      |
+| CAD5    | SUNSCREEN   | SUNSCREEN   |
+| CAD6    | SUNSCREEN   | POWDER      |
+| CAD6    | SUNSCREEN   | SUNSCREEN   |
+| CAD6    | SUNSCREEN   | BAG         |
+| CAD7    | BAG         | POWDER      |
+| CAD7    | BAG         | SUNSCREEN   |
+| CAD7    | BAG         | BAG         |
+| CAD8    | BAG         | POWDER      |
+| CAD8    | BAG         | SUNSCREEN   |
+| CAD8    | BAG         | BAG         |
+| CAD8    | BAG         | MOISTURIZER |
+| CAD9    | MOISTURIZER | POWDER      |
+| CAD9    | MOISTURIZER | SUNSCREEN   |
+| CAD9    | MOISTURIZER | BAG         |
+| CAD9    | MOISTURIZER | MOISTURIZER |
+| CAD10   | MOISTURIZER | POWDER      |
++---------+-------------+-------------+
+21 rows in set (0.01 sec)
+
+mysql> SELECT ORDERS.orderid,ORDERS.ordername,PRODUCTS.PRODUCTNAME FROM ORDERS left JOIN PRODUCTS ON ORDERS.orderid>PRODUCTS.ORDERID;
++---------+-------------+-------------+
+| orderid | ordername   | PRODUCTNAME |
++---------+-------------+-------------+
+| CAD2    | POWDER      | POWDER      |
+| CAD3    | POWDER      | POWDER      |
+| CAD4    | POWDER      | POWDER      |
+| CAD5    | SUNSCREEN   | POWDER      |
+| CAD6    | SUNSCREEN   | POWDER      |
+| CAD7    | BAG         | POWDER      |
+| CAD8    | BAG         | POWDER      |
+| CAD9    | MOISTURIZER | POWDER      |
+| CAD10   | MOISTURIZER | POWDER      |
+| CAD4    | POWDER      | SUNSCREEN   |
+| CAD5    | SUNSCREEN   | SUNSCREEN   |
+| CAD6    | SUNSCREEN   | SUNSCREEN   |
+| CAD7    | BAG         | SUNSCREEN   |
+| CAD8    | BAG         | SUNSCREEN   |
+| CAD9    | MOISTURIZER | SUNSCREEN   |
+| CAD6    | SUNSCREEN   | BAG         |
+| CAD7    | BAG         | BAG         |
+| CAD8    | BAG         | BAG         |
+| CAD9    | MOISTURIZER | BAG         |
+| CAD8    | BAG         | MOISTURIZER |
+| CAD9    | MOISTURIZER | MOISTURIZER |
+| CAD1    | RANIYA      | NULL        |
++---------+-------------+-------------+
+22 rows in set (0.00 sec)
+
+mysql> SELECT ORDERS.orderid,ORDERS.ordername,PRODUCTS.PRODUCTNAME FROM ORDERS left JOIN PRODUCTS ON ORDERS.orderid=PRODUCTS.ORDERID;
++---------+-------------+-------------+
+| orderid | ordername   | PRODUCTNAME |
++---------+-------------+-------------+
+| CAD1    | RANIYA      | POWDER      |
+| CAD3    | POWDER      | SUNSCREEN   |
+| CAD5    | SUNSCREEN   | BAG         |
+| CAD7    | BAG         | MOISTURIZER |
+| CAD9    | MOISTURIZER | RANIYA      |
+| CAD2    | POWDER      | NULL        |
+| CAD4    | POWDER      | NULL        |
+| CAD6    | SUNSCREEN   | NULL        |
+| CAD8    | BAG         | NULL        |
+| CAD10   | MOISTURIZER | NULL        |
++---------+-------------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT ORDERS.orderid,ORDERS.ordername,PRODUCTS.PRODUCTNAME FROM ORDERS right JOIN PRODUCTS ON ORDERS.orderid=PRODUCTS.ORDERID;
++---------+-------------+-------------+
+| orderid | ordername   | PRODUCTNAME |
++---------+-------------+-------------+
+| CAD1    | RANIYA      | POWDER      |
+| CAD3    | POWDER      | SUNSCREEN   |
+| CAD5    | SUNSCREEN   | BAG         |
+| CAD7    | BAG         | MOISTURIZER |
+| CAD9    | MOISTURIZER | RANIYA      |
++---------+-------------+-------------+
+5 rows in set (0.00 sec)
+
