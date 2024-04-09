@@ -165,6 +165,7 @@ mysql> SHOW TABLES;
 | orders             |
 | products           |
 +--------------------+
+  
 4 rows in set (0.32 sec)
 
 mysql> DESC DEPARTMENT;
