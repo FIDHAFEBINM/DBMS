@@ -114,3 +114,123 @@ mysql> SELECT * FROM FACULTY;
 3 rows in set (0.00 sec)
 
 mysql>
+mysql> UPDATE FACUKTY SET FNAME="RANI" WHERE FNO="A2";
+ERROR 1146 (42S02): Table 'employee.facukty' doesn't exist
+mysql> UPDATE FACULTY SET FNAME="RANI" WHERE FNO="A2";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM FACULTY;
++-----+--------+---------+
+| FNO | FNAME  | STAFFID |
++-----+--------+---------+
+| A2  | RANI   | AB2     |
+| A3  | HADIYA | AB3     |
++-----+--------+---------+
+2 rows in set (0.00 sec)
+
+mysql> ROLLBACK;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM FACULTY;
++-----+--------+---------+
+| FNO | FNAME  | STAFFID |
++-----+--------+---------+
+| A2  | RANI   | AB2     |
+| A3  | HADIYA | AB3     |
++-----+--------+---------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM FACULTY;
++-----+--------+---------+
+| FNO | FNAME  | STAFFID |
++-----+--------+---------+
+| A2  | RANI   | AB2     |
+| A3  | HADIYA | AB3     |
++-----+--------+---------+
+2 rows in set (0.00 sec)
+
+mysql> ROLLBACK;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> UPDATE FACUKTY SET FNAME="RANI" WHERE FNO="A2";
+ERROR 1146 (42S02): Table 'employee.facukty' doesn't exist
+mysql> DELETE FROM FACULTY WHERE FNAME='RANIYA';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM FACULTY;
++-----+--------+---------+
+| FNO | FNAME  | STAFFID |
++-----+--------+---------+
+| A2  | RANI   | AB2     |
+| A3  | HADIYA | AB3     |
++-----+--------+---------+
+2 rows in set (0.00 sec)
+
+mysql> ROLLBACK;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM FACULTY;
++-----+--------+---------+
+| FNO | FNAME  | STAFFID |
++-----+--------+---------+
+| A2  | RANI   | AB2     |
+| A3  | HADIYA | AB3     |
++-----+--------+---------+
+2 rows in set (0.00 sec)
+
+mysql> DELETE FROM FACULTY WHERE FNAME='RANI';
+Query OK, 1 row affected (0.19 sec)
+
+mysql> ROLLBACK;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM FACULTY;
++-----+--------+---------+
+| FNO | FNAME  | STAFFID |
++-----+--------+---------+
+| A3  | HADIYA | AB3     |
++-----+--------+---------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO FACULTY("A1","FIDHA","AB1");
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"A1","FIDHA","AB1")' at line 1
+mysql> INSERT INTO FACULTY VALUES("A1","FIDHA","AB1");
+Query OK, 1 row affected (0.09 sec)
+
+mysql> INSERT INTO FACULTY VALUES("A2","RANIYA","AB2");
+Query OK, 1 row affected (0.08 sec)
+
+mysql> INSERT INTO FACULTY VALUES("A3","FIDHA","AB4");
+ERROR 1062 (23000): Duplicate entry 'A3' for key 'faculty.PRIMARY'
+mysql> INSERT INTO FACULTY VALUES("A4","FIDHA","AB4");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SELECT * FROM FACULTY;
++-----+--------+---------+
+| FNO | FNAME  | STAFFID |
++-----+--------+---------+
+| A1  | FIDHA  | AB1     |
+| A2  | RANIYA | AB2     |
+| A3  | HADIYA | AB3     |
+| A4  | FIDHA  | AB4     |
++-----+--------+---------+
+4 rows in set (0.00 sec)
+
+mysql> COMMIT;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM FACULTY;
++-----+--------+---------+
+| FNO | FNAME  | STAFFID |
++-----+--------+---------+
+| A1  | FIDHA  | AB1     |
+| A2  | RANIYA | AB2     |
+| A3  | HADIYA | AB3     |
+| A4  | FIDHA  | AB4     |
++-----+--------+---------+
+4 rows in set (0.00 sec)
+
+mysql>
+
+
