@@ -194,4 +194,329 @@ Error: error: {
         "name" : "Ahash",
         "age" : 21
 }
+> db.febins.distinct("name")
+[
+        "Ahash",
+        "Hadiya",
+        "Hasna",
+        "Kavya",
+        "Lubina",
+        "Lubna",
+        "Nafiya",
+        "Nawaf",
+        "Nazeem",
+        "Nibha",
+        "Rahul",
+        "Raniya",
+        "fidha",
+        "roushada"
+]
+> db.febins.insert({"name":"Ahash"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.distinct("name")
+[
+        "Ahash",
+        "Hadiya",
+        "Hasna",
+        "Kavya",
+        "Lubina",
+        "Lubna",
+        "Nafiya",
+        "Nawaf",
+        "Nazeem",
+        "Nibha",
+        "Rahul",
+        "Raniya",
+        "fidha",
+        "roushada"
+]
+> db.febins.find("name")
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "Executor error during find command :: caused by :: ReferenceError: name is not defined :\n@:1:15\n",
+        "code" : 139,
+        "codeName" : "JSInterpreterFailure"
+}
+> db.febins.distinct("name")
+[
+        "Ahash",
+        "Hadiya",
+        "Hasna",
+        "Kavya",
+        "Lubina",
+        "Lubna",
+        "Nafiya",
+        "Nawaf",
+        "Nazeem",
+        "Nibha",
+        "Rahul",
+        "Raniya",
+        "fidha",
+        "roushada"
+]
+> db.febins.count()
+15
+> db.febins.update({"name":"nibha"},{set:{age:21}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.febins.update({"name":"nibha"},{set:{age:23}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.febins.update({"name":"nibha"},{set:{age:23}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.febins.find("name")
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "Executor error during find command :: caused by :: ReferenceError: name is not defined :\n@:1:15\n",
+        "code" : 139,
+        "codeName" : "JSInterpreterFailure"
+}
+> db.febins.find()
+{ "_id" : ObjectId("66222797551f5037406e435d"), "name" : "fidha" }
+{ "_id" : ObjectId("66222840551f5037406e435e"), "name" : "Raniya" }
+{ "_id" : ObjectId("662228ef551f5037406e435f"), "name" : "Hadiya" }
+{ "_id" : ObjectId("662228fa551f5037406e4360"), "name" : "Kavya" }
+{ "_id" : ObjectId("66222902551f5037406e4361"), "name" : "Nafiya" }
+{ "_id" : ObjectId("66222909551f5037406e4362"), "name" : "Lubna" }
+{ "_id" : ObjectId("6622290d551f5037406e4363"), "name" : "Lubina" }
+{ "_id" : ObjectId("6622291c551f5037406e4364"), "name" : "Nawaf" }
+{ "_id" : ObjectId("6622292b551f5037406e4365"), "name" : "Nazeem" }
+{ "_id" : ObjectId("6622295c551f5037406e4366"), "name" : "Hasna" }
+{ "_id" : ObjectId("66222ab3551f5037406e4367"), "name" : "Nibha", "age" : 21 }
+{ "_id" : ObjectId("66222ac5551f5037406e4368"), "name" : "Rahul", "age" : 24 }
+{ "_id" : ObjectId("66222ae7551f5037406e4369"), "name" : "roushada", "age" : 22 }
+{ "_id" : ObjectId("66222b80551f5037406e436a"), "name" : "Ahash", "age" : 21 }
+{ "_id" : ObjectId("6622375c551f5037406e436b"), "name" : "Ahash" }
+> db.febins.update({"name":"Nibha"},{set:{age:23}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.febins.find()
+{ "_id" : ObjectId("66222797551f5037406e435d"), "name" : "fidha" }
+{ "_id" : ObjectId("66222840551f5037406e435e"), "name" : "Raniya" }
+{ "_id" : ObjectId("662228ef551f5037406e435f"), "name" : "Hadiya" }
+{ "_id" : ObjectId("662228fa551f5037406e4360"), "name" : "Kavya" }
+{ "_id" : ObjectId("66222902551f5037406e4361"), "name" : "Nafiya" }
+{ "_id" : ObjectId("66222909551f5037406e4362"), "name" : "Lubna" }
+{ "_id" : ObjectId("6622290d551f5037406e4363"), "name" : "Lubina" }
+{ "_id" : ObjectId("6622291c551f5037406e4364"), "name" : "Nawaf" }
+{ "_id" : ObjectId("6622292b551f5037406e4365"), "name" : "Nazeem" }
+{ "_id" : ObjectId("6622295c551f5037406e4366"), "name" : "Hasna" }
+{ "_id" : ObjectId("66222ab3551f5037406e4367"), "set" : { "age" : 23 } }
+{ "_id" : ObjectId("66222ac5551f5037406e4368"), "name" : "Rahul", "age" : 24 }
+{ "_id" : ObjectId("66222ae7551f5037406e4369"), "name" : "roushada", "age" : 22 }
+{ "_id" : ObjectId("66222b80551f5037406e436a"), "name" : "Ahash", "age" : 21 }
+{ "_id" : ObjectId("6622375c551f5037406e436b"), "name" : "Ahash" }
+> db.febins.update({"name":"Nibha"},{set:age:23})
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:42
+> db.febins.remove({"name":"Nibha"},{set:{age:23}})
+WriteResult({ "nRemoved" : 0 })
+> db.febins.remove({"name":"Nibha"})
+WriteResult({ "nRemoved" : 0 })
+> db.febins.find()
+{ "_id" : ObjectId("66222797551f5037406e435d"), "name" : "fidha" }
+{ "_id" : ObjectId("66222840551f5037406e435e"), "name" : "Raniya" }
+{ "_id" : ObjectId("662228ef551f5037406e435f"), "name" : "Hadiya" }
+{ "_id" : ObjectId("662228fa551f5037406e4360"), "name" : "Kavya" }
+{ "_id" : ObjectId("66222902551f5037406e4361"), "name" : "Nafiya" }
+{ "_id" : ObjectId("66222909551f5037406e4362"), "name" : "Lubna" }
+{ "_id" : ObjectId("6622290d551f5037406e4363"), "name" : "Lubina" }
+{ "_id" : ObjectId("6622291c551f5037406e4364"), "name" : "Nawaf" }
+{ "_id" : ObjectId("6622292b551f5037406e4365"), "name" : "Nazeem" }
+{ "_id" : ObjectId("6622295c551f5037406e4366"), "name" : "Hasna" }
+{ "_id" : ObjectId("66222ab3551f5037406e4367"), "set" : { "age" : 23 } }
+{ "_id" : ObjectId("66222ac5551f5037406e4368"), "name" : "Rahul", "age" : 24 }
+{ "_id" : ObjectId("66222ae7551f5037406e4369"), "name" : "roushada", "age" : 22 }
+{ "_id" : ObjectId("66222b80551f5037406e436a"), "name" : "Ahash", "age" : 21 }
+{ "_id" : ObjectId("6622375c551f5037406e436b"), "name" : "Ahash" }
+> db.febins.remove({"name":"Nawaf"})
+WriteResult({ "nRemoved" : 1 })
+> db.febins.find()
+{ "_id" : ObjectId("66222797551f5037406e435d"), "name" : "fidha" }
+{ "_id" : ObjectId("66222840551f5037406e435e"), "name" : "Raniya" }
+{ "_id" : ObjectId("662228ef551f5037406e435f"), "name" : "Hadiya" }
+{ "_id" : ObjectId("662228fa551f5037406e4360"), "name" : "Kavya" }
+{ "_id" : ObjectId("66222902551f5037406e4361"), "name" : "Nafiya" }
+{ "_id" : ObjectId("66222909551f5037406e4362"), "name" : "Lubna" }
+{ "_id" : ObjectId("6622290d551f5037406e4363"), "name" : "Lubina" }
+{ "_id" : ObjectId("6622292b551f5037406e4365"), "name" : "Nazeem" }
+{ "_id" : ObjectId("6622295c551f5037406e4366"), "name" : "Hasna" }
+{ "_id" : ObjectId("66222ab3551f5037406e4367"), "set" : { "age" : 23 } }
+{ "_id" : ObjectId("66222ac5551f5037406e4368"), "name" : "Rahul", "age" : 24 }
+{ "_id" : ObjectId("66222ae7551f5037406e4369"), "name" : "roushada", "age" : 22 }
+{ "_id" : ObjectId("66222b80551f5037406e436a"), "name" : "Ahash", "age" : 21 }
+{ "_id" : ObjectId("6622375c551f5037406e436b"), "name" : "Ahash" }
+> db.febins.remove({"name":"Raniya"})
+WriteResult({ "nRemoved" : 1 })
+> db.febins.find()
+{ "_id" : ObjectId("66222797551f5037406e435d"), "name" : "fidha" }
+{ "_id" : ObjectId("662228ef551f5037406e435f"), "name" : "Hadiya" }
+{ "_id" : ObjectId("662228fa551f5037406e4360"), "name" : "Kavya" }
+{ "_id" : ObjectId("66222902551f5037406e4361"), "name" : "Nafiya" }
+{ "_id" : ObjectId("66222909551f5037406e4362"), "name" : "Lubna" }
+{ "_id" : ObjectId("6622290d551f5037406e4363"), "name" : "Lubina" }
+{ "_id" : ObjectId("6622292b551f5037406e4365"), "name" : "Nazeem" }
+{ "_id" : ObjectId("6622295c551f5037406e4366"), "name" : "Hasna" }
+{ "_id" : ObjectId("66222ab3551f5037406e4367"), "set" : { "age" : 23 } }
+{ "_id" : ObjectId("66222ac5551f5037406e4368"), "name" : "Rahul", "age" : 24 }
+{ "_id" : ObjectId("66222ae7551f5037406e4369"), "name" : "roushada", "age" : 22 }
+{ "_id" : ObjectId("66222b80551f5037406e436a"), "name" : "Ahash", "age" : 21 }
+{ "_id" : ObjectId("6622375c551f5037406e436b"), "name" : "Ahash" }
+> db.febins.remove({"age":23})
+WriteResult({ "nRemoved" : 0 })
+> db.febins.find()
+{ "_id" : ObjectId("66222797551f5037406e435d"), "name" : "fidha" }
+{ "_id" : ObjectId("662228ef551f5037406e435f"), "name" : "Hadiya" }
+{ "_id" : ObjectId("662228fa551f5037406e4360"), "name" : "Kavya" }
+{ "_id" : ObjectId("66222902551f5037406e4361"), "name" : "Nafiya" }
+{ "_id" : ObjectId("66222909551f5037406e4362"), "name" : "Lubna" }
+{ "_id" : ObjectId("6622290d551f5037406e4363"), "name" : "Lubina" }
+{ "_id" : ObjectId("6622292b551f5037406e4365"), "name" : "Nazeem" }
+{ "_id" : ObjectId("6622295c551f5037406e4366"), "name" : "Hasna" }
+{ "_id" : ObjectId("66222ab3551f5037406e4367"), "set" : { "age" : 23 } }
+{ "_id" : ObjectId("66222ac5551f5037406e4368"), "name" : "Rahul", "age" : 24 }
+{ "_id" : ObjectId("66222ae7551f5037406e4369"), "name" : "roushada", "age" : 22 }
+{ "_id" : ObjectId("66222b80551f5037406e436a"), "name" : "Ahash", "age" : 21 }
+{ "_id" : ObjectId("6622375c551f5037406e436b"), "name" : "Ahash" }
+> db.febins.remove({"set":23})
+WriteResult({ "nRemoved" : 0 })
+> db.febins.remove({"set":{"age":23}})
+WriteResult({ "nRemoved" : 1 })
+> db.febins.find()
+{ "_id" : ObjectId("66222797551f5037406e435d"), "name" : "fidha" }
+{ "_id" : ObjectId("662228ef551f5037406e435f"), "name" : "Hadiya" }
+{ "_id" : ObjectId("662228fa551f5037406e4360"), "name" : "Kavya" }
+{ "_id" : ObjectId("66222902551f5037406e4361"), "name" : "Nafiya" }
+{ "_id" : ObjectId("66222909551f5037406e4362"), "name" : "Lubna" }
+{ "_id" : ObjectId("6622290d551f5037406e4363"), "name" : "Lubina" }
+{ "_id" : ObjectId("6622292b551f5037406e4365"), "name" : "Nazeem" }
+{ "_id" : ObjectId("6622295c551f5037406e4366"), "name" : "Hasna" }
+{ "_id" : ObjectId("66222ac5551f5037406e4368"), "name" : "Rahul", "age" : 24 }
+{ "_id" : ObjectId("66222ae7551f5037406e4369"), "name" : "roushada", "age" : 22 }
+{ "_id" : ObjectId("66222b80551f5037406e436a"), "name" : "Ahash", "age" : 21 }
+{ "_id" : ObjectId("6622375c551f5037406e436b"), "name" : "Ahash" }
+> db.febins.insert({"name":"Raniya"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"Nibha akash"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.find()
+{ "_id" : ObjectId("66222797551f5037406e435d"), "name" : "fidha" }
+{ "_id" : ObjectId("662228ef551f5037406e435f"), "name" : "Hadiya" }
+{ "_id" : ObjectId("662228fa551f5037406e4360"), "name" : "Kavya" }
+{ "_id" : ObjectId("66222902551f5037406e4361"), "name" : "Nafiya" }
+{ "_id" : ObjectId("66222909551f5037406e4362"), "name" : "Lubna" }
+{ "_id" : ObjectId("6622290d551f5037406e4363"), "name" : "Lubina" }
+{ "_id" : ObjectId("6622292b551f5037406e4365"), "name" : "Nazeem" }
+{ "_id" : ObjectId("6622295c551f5037406e4366"), "name" : "Hasna" }
+{ "_id" : ObjectId("66222ac5551f5037406e4368"), "name" : "Rahul", "age" : 24 }
+{ "_id" : ObjectId("66222ae7551f5037406e4369"), "name" : "roushada", "age" : 22 }
+{ "_id" : ObjectId("66222b80551f5037406e436a"), "name" : "Ahash", "age" : 21 }
+{ "_id" : ObjectId("6622375c551f5037406e436b"), "name" : "Ahash" }
+{ "_id" : ObjectId("66223b2c551f5037406e436c"), "name" : "Raniya" }
+{ "_id" : ObjectId("66223b42551f5037406e436d"), "name" : "Nibha akash" }
+> db.febins.insert({"name":"Nibha Dani Rani"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.find()
+{ "_id" : ObjectId("66222797551f5037406e435d"), "name" : "fidha" }
+{ "_id" : ObjectId("662228ef551f5037406e435f"), "name" : "Hadiya" }
+{ "_id" : ObjectId("662228fa551f5037406e4360"), "name" : "Kavya" }
+{ "_id" : ObjectId("66222902551f5037406e4361"), "name" : "Nafiya" }
+{ "_id" : ObjectId("66222909551f5037406e4362"), "name" : "Lubna" }
+{ "_id" : ObjectId("6622290d551f5037406e4363"), "name" : "Lubina" }
+{ "_id" : ObjectId("6622292b551f5037406e4365"), "name" : "Nazeem" }
+{ "_id" : ObjectId("6622295c551f5037406e4366"), "name" : "Hasna" }
+{ "_id" : ObjectId("66222ac5551f5037406e4368"), "name" : "Rahul", "age" : 24 }
+{ "_id" : ObjectId("66222ae7551f5037406e4369"), "name" : "roushada", "age" : 22 }
+{ "_id" : ObjectId("66222b80551f5037406e436a"), "name" : "Ahash", "age" : 21 }
+{ "_id" : ObjectId("6622375c551f5037406e436b"), "name" : "Ahash" }
+{ "_id" : ObjectId("66223b2c551f5037406e436c"), "name" : "Raniya" }
+{ "_id" : ObjectId("66223b42551f5037406e436d"), "name" : "Nibha akash" }
+{ "_id" : ObjectId("66223b73551f5037406e436e"), "name" : "Nibha Dani Rani" }
+> db.febins.remove({"name":"Nibha"})
+WriteResult({ "nRemoved" : 0 })
+> db.febins.remove({"name":"Nibha akash"})
+WriteResult({ "nRemoved" : 1 })
+> db.febins.insertMany([{name:"Rani",age:24}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("66223c2d551f5037406e436f")
+        ]
+}
+> db.febins.insertMany([{name:"Rani",age:24},{name:"fidha",age:21}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("66223c6d551f5037406e4370"),
+                ObjectId("66223c6d551f5037406e4371")
+        ]
+}
+> db.febins.find()
+{ "_id" : ObjectId("66222797551f5037406e435d"), "name" : "fidha" }
+{ "_id" : ObjectId("662228ef551f5037406e435f"), "name" : "Hadiya" }
+{ "_id" : ObjectId("662228fa551f5037406e4360"), "name" : "Kavya" }
+{ "_id" : ObjectId("66222902551f5037406e4361"), "name" : "Nafiya" }
+{ "_id" : ObjectId("66222909551f5037406e4362"), "name" : "Lubna" }
+{ "_id" : ObjectId("6622290d551f5037406e4363"), "name" : "Lubina" }
+{ "_id" : ObjectId("6622292b551f5037406e4365"), "name" : "Nazeem" }
+{ "_id" : ObjectId("6622295c551f5037406e4366"), "name" : "Hasna" }
+{ "_id" : ObjectId("66222ac5551f5037406e4368"), "name" : "Rahul", "age" : 24 }
+{ "_id" : ObjectId("66222ae7551f5037406e4369"), "name" : "roushada", "age" : 22 }
+{ "_id" : ObjectId("66222b80551f5037406e436a"), "name" : "Ahash", "age" : 21 }
+{ "_id" : ObjectId("6622375c551f5037406e436b"), "name" : "Ahash" }
+{ "_id" : ObjectId("66223b2c551f5037406e436c"), "name" : "Raniya" }
+{ "_id" : ObjectId("66223b73551f5037406e436e"), "name" : "Nibha Dani Rani" }
+{ "_id" : ObjectId("66223c2d551f5037406e436f"), "name" : "Rani", "age" : 24 }
+{ "_id" : ObjectId("66223c6d551f5037406e4370"), "name" : "Rani", "age" : 24 }
+{ "_id" : ObjectId("66223c6d551f5037406e4371"), "name" : "fidha", "age" : 21 }
+> db.febins.find().sort()\
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shellhelp1):1:52
+error2:SyntaxError: "" literal not terminated before end of script :
+@(shellhelp1):1:52
+
+> db.febins.find().sort()
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "Expected field sortto be of type object",
+        "code" : 14,
+        "codeName" : "TypeMismatch"
+}
+> db.febins.find().sort({"name"})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:29
+> db.febins.find().sort({name:-1})
+{ "_id" : ObjectId("66222ae7551f5037406e4369"), "name" : "roushada", "age" : 22 }
+{ "_id" : ObjectId("66222797551f5037406e435d"), "name" : "fidha" }
+{ "_id" : ObjectId("66223c6d551f5037406e4371"), "name" : "fidha", "age" : 21 }
+{ "_id" : ObjectId("66223b2c551f5037406e436c"), "name" : "Raniya" }
+{ "_id" : ObjectId("66223c2d551f5037406e436f"), "name" : "Rani", "age" : 24 }
+{ "_id" : ObjectId("66223c6d551f5037406e4370"), "name" : "Rani", "age" : 24 }
+{ "_id" : ObjectId("66222ac5551f5037406e4368"), "name" : "Rahul", "age" : 24 }
+{ "_id" : ObjectId("66223b73551f5037406e436e"), "name" : "Nibha Dani Rani" }
+{ "_id" : ObjectId("6622292b551f5037406e4365"), "name" : "Nazeem" }
+{ "_id" : ObjectId("66222902551f5037406e4361"), "name" : "Nafiya" }
+{ "_id" : ObjectId("66222909551f5037406e4362"), "name" : "Lubna" }
+{ "_id" : ObjectId("6622290d551f5037406e4363"), "name" : "Lubina" }
+{ "_id" : ObjectId("662228fa551f5037406e4360"), "name" : "Kavya" }
+{ "_id" : ObjectId("6622295c551f5037406e4366"), "name" : "Hasna" }
+{ "_id" : ObjectId("662228ef551f5037406e435f"), "name" : "Hadiya" }
+{ "_id" : ObjectId("66222b80551f5037406e436a"), "name" : "Ahash", "age" : 21 }
+{ "_id" : ObjectId("6622375c551f5037406e436b"), "name" : "Ahash" }
+> db.febins.find().sort({name:1})
+{ "_id" : ObjectId("66222b80551f5037406e436a"), "name" : "Ahash", "age" : 21 }
+{ "_id" : ObjectId("6622375c551f5037406e436b"), "name" : "Ahash" }
+{ "_id" : ObjectId("662228ef551f5037406e435f"), "name" : "Hadiya" }
+{ "_id" : ObjectId("6622295c551f5037406e4366"), "name" : "Hasna" }
+{ "_id" : ObjectId("662228fa551f5037406e4360"), "name" : "Kavya" }
+{ "_id" : ObjectId("6622290d551f5037406e4363"), "name" : "Lubina" }
+{ "_id" : ObjectId("66222909551f5037406e4362"), "name" : "Lubna" }
+{ "_id" : ObjectId("66222902551f5037406e4361"), "name" : "Nafiya" }
+{ "_id" : ObjectId("6622292b551f5037406e4365"), "name" : "Nazeem" }
+{ "_id" : ObjectId("66223b73551f5037406e436e"), "name" : "Nibha Dani Rani" }
+{ "_id" : ObjectId("66222ac5551f5037406e4368"), "name" : "Rahul", "age" : 24 }
+{ "_id" : ObjectId("66223c2d551f5037406e436f"), "name" : "Rani", "age" : 24 }
+{ "_id" : ObjectId("66223c6d551f5037406e4370"), "name" : "Rani", "age" : 24 }
+{ "_id" : ObjectId("66223b2c551f5037406e436c"), "name" : "Raniya" }
+{ "_id" : ObjectId("66222797551f5037406e435d"), "name" : "fidha" }
+{ "_id" : ObjectId("66223c6d551f5037406e4371"), "name" : "fidha", "age" : 21 }
+{ "_id" : ObjectId("66222ae7551f5037406e4369"), "name" : "roushada", "age" : 22 }
 >
+
