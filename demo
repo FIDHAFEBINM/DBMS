@@ -1,0 +1,197 @@
+> show db
+uncaught exception: Error: don't know how to show [db] :
+shellHelper.show@src/mongo/shell/utils.js:1211:11
+shellHelper@src/mongo/shell/utils.js:838:15
+@(shellhelp2):1:1
+> show dbs
+admin      0.000GB
+config     0.000GB
+employee   0.000GB
+employee1  0.000GB
+fidha      0.000GB
+local      0.000GB
+test       0.000GB
+> use fidha
+switched to db fidha
+> db createCollection febins
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:3
+> db.createCollection febins
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:20
+> db.createCollection('febins')
+{ "ok" : 1 }
+> db.febins.insert({"feild1":"value1"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"fidha"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"Raniya"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"Hadiya"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"Kavya"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"Nafiya"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"Lubna"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"Lubina"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"Nawaf"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"Nazeem"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"Hasna"})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"Nibha","age":21})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"Rahul","age":24})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"roushada","age":22})
+WriteResult({ "nInserted" : 1 })
+> db.febins.insert({"name":"Ahash","age":21})
+WriteResult({ "nInserted" : 1 })
+> db.febins.find
+function(query, fields, limit, skip, batchSize, options) {
+    var cursor = new DBQuery(this._mongo,
+                             this._db,
+                             this,
+                             this._fullName,
+                             this._massageObject(query),
+                             fields,
+                             limit,
+                             skip,
+                             batchSize,
+                             options || this.getQueryOptions());
+
+    {
+        const session = this.getDB().getSession();
+
+        const readPreference = session._getSessionAwareClient().getReadPreference(session);
+        if (readPreference !== null) {
+            cursor.readPref(readPreference.mode, readPreference.tags);
+        }
+
+        const client = session._getSessionAwareClient();
+        const readConcern = client.getReadConcern(session);
+        if (readConcern !== null &&
+            client.canUseReadConcern(session, cursor._convertToCommand(true))) {
+            cursor.readConcern(readConcern.level);
+        }
+    }
+
+    return cursor;
+}
+> db.febins.find()
+{ "_id" : ObjectId("66222797551f5037406e435d"), "name" : "fidha" }
+{ "_id" : ObjectId("66222840551f5037406e435e"), "name" : "Raniya" }
+{ "_id" : ObjectId("662228ef551f5037406e435f"), "name" : "Hadiya" }
+{ "_id" : ObjectId("662228fa551f5037406e4360"), "name" : "Kavya" }
+{ "_id" : ObjectId("66222902551f5037406e4361"), "name" : "Nafiya" }
+{ "_id" : ObjectId("66222909551f5037406e4362"), "name" : "Lubna" }
+{ "_id" : ObjectId("6622290d551f5037406e4363"), "name" : "Lubina" }
+{ "_id" : ObjectId("6622291c551f5037406e4364"), "name" : "Nawaf" }
+{ "_id" : ObjectId("6622292b551f5037406e4365"), "name" : "Nazeem" }
+{ "_id" : ObjectId("6622295c551f5037406e4366"), "name" : "Hasna" }
+{ "_id" : ObjectId("66222ab3551f5037406e4367"), "name" : "Nibha", "age" : 21 }
+{ "_id" : ObjectId("66222ac5551f5037406e4368"), "name" : "Rahul", "age" : 24 }
+{ "_id" : ObjectId("66222ae7551f5037406e4369"), "name" : "roushada", "age" : 22 }
+{ "_id" : ObjectId("66222b80551f5037406e436a"), "name" : "Ahash", "age" : 21 }
+> db.febins.find.pretty()
+uncaught exception: TypeError: db.febins.find.pretty is not a function :
+@(shell):1:1
+> db.febins.find().pretty()
+{ "_id" : ObjectId("66222797551f5037406e435d"), "name" : "fidha" }
+{ "_id" : ObjectId("66222840551f5037406e435e"), "name" : "Raniya" }
+{ "_id" : ObjectId("662228ef551f5037406e435f"), "name" : "Hadiya" }
+{ "_id" : ObjectId("662228fa551f5037406e4360"), "name" : "Kavya" }
+{ "_id" : ObjectId("66222902551f5037406e4361"), "name" : "Nafiya" }
+{ "_id" : ObjectId("66222909551f5037406e4362"), "name" : "Lubna" }
+{ "_id" : ObjectId("6622290d551f5037406e4363"), "name" : "Lubina" }
+{ "_id" : ObjectId("6622291c551f5037406e4364"), "name" : "Nawaf" }
+{ "_id" : ObjectId("6622292b551f5037406e4365"), "name" : "Nazeem" }
+{ "_id" : ObjectId("6622295c551f5037406e4366"), "name" : "Hasna" }
+{
+        "_id" : ObjectId("66222ab3551f5037406e4367"),
+        "name" : "Nibha",
+        "age" : 21
+}
+{
+        "_id" : ObjectId("66222ac5551f5037406e4368"),
+        "name" : "Rahul",
+        "age" : 24
+}
+{
+        "_id" : ObjectId("66222ae7551f5037406e4369"),
+        "name" : "roushada",
+        "age" : 22
+}
+{
+        "_id" : ObjectId("66222b80551f5037406e436a"),
+        "name" : "Ahash",
+        "age" : 21
+}
+> db.febins.find({age:{$gt:21}}).pretty()
+{
+        "_id" : ObjectId("66222ac5551f5037406e4368"),
+        "name" : "Rahul",
+        "age" : 24
+}
+{
+        "_id" : ObjectId("66222ae7551f5037406e4369"),
+        "name" : "roushada",
+        "age" : 22
+}
+> db.febins.find({age:{$et:21}}).pretty()
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "unknown operator: $et",
+        "code" : 2,
+        "codeName" : "BadValue"
+}
+> db.febins.find({age:{$lt:21}}).pretty()
+> db.febins.find({age:{$gt:21}}).pretty()
+{
+        "_id" : ObjectId("66222ac5551f5037406e4368"),
+        "name" : "Rahul",
+        "age" : 24
+}
+{
+        "_id" : ObjectId("66222ae7551f5037406e4369"),
+        "name" : "roushada",
+        "age" : 22
+}
+> db.febins.find({age:{$lt:22}}).pretty()
+{
+        "_id" : ObjectId("66222ab3551f5037406e4367"),
+        "name" : "Nibha",
+        "age" : 21
+}
+{
+        "_id" : ObjectId("66222b80551f5037406e436a"),
+        "name" : "Ahash",
+        "age" : 21
+}
+> db.febins.find({age:{$eq:22}}).pretty()
+{
+        "_id" : ObjectId("66222ae7551f5037406e4369"),
+        "name" : "roushada",
+        "age" : 22
+}
+> db.febins.find({age:{$lte:22}}).pretty()
+{
+        "_id" : ObjectId("66222ab3551f5037406e4367"),
+        "name" : "Nibha",
+        "age" : 21
+}
+{
+        "_id" : ObjectId("66222ae7551f5037406e4369"),
+        "name" : "roushada",
+        "age" : 22
+}
+{
+        "_id" : ObjectId("66222b80551f5037406e436a"),
+        "name" : "Ahash",
+        "age" : 21
+}
+>
